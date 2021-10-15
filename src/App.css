@@ -1,0 +1,499 @@
+.App {
+    text-align: center;
+    color: red;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    text-align: center;
+    color: white;
+}
+
+.column {
+    box-sizing: border-box;
+    float: left;
+    width: 50%;
+    padding: 1px;
+    height: 10%;
+}
+
+#cols {
+    color: blue;
+}
+
+.nameBanner {
+    color: blue;
+}
+
+#btnCreateBanner {
+    margin-left: 400px;
+}
+
+.iconPage {
+    width: 100px;
+    height: 50px;
+}
+
+.iconOne {
+    width: 60px;
+    height: 60px;
+    margin-left: 8%;
+}
+
+.b-add {
+    width: 80px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.table {
+    float: left;
+}
+
+.td {
+    margin-left: 10px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/*!* Set a style for all buttons *!*/
+/*.button {*/
+/*    background-color: #04AA6D;*/
+/*    color: white;*/
+/*    padding: 14px 20px;*/
+/*    margin: 8px 0;*/
+/*    border: none;*/
+/*    cursor: pointer;*/
+/*    width: 100%;*/
+/*    opacity: 0.9;*/
+/*}*/
+
+/*.button:hover {*/
+/*    opacity:1;*/
+/*}*/
+
+/* Extra styles for the cancel button */
+
+/* Add padding to container elements */
+.container {
+    padding: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #474e5d;
+    padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+.center-screen {
+    justify-content: center;
+    text-align: center;
+}
+
+#content {
+    overflow: auto;
+    width: 100%;
+    /*background: gray;*/
+}
+
+#left, #right {
+    width: 49%;
+    margin: 5px;
+    padding: 1em;
+    background: white;
+}
+
+#left {
+    float: left;
+}
+
+#right {
+    float: right;
+}
+
+.content {
+    overflow: auto;
+    width: 100%;
+    /*background: gray;*/
+}
+
+.left, .right {
+    width: 49%;
+    margin: 5px;
+    padding: 1em;
+    background: white;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 97%;
+    transform: translate(-50%, -50%);
+}
+
+.avatar-div {
+    width: 20%;
+    margin-left: 10%;
+}
+
+.icon-div {
+    float: right;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.page {
+    float: right
+}
+
+.image-upload > input {
+    display: none;
+}
+
+.image-upload img {
+    width: 80px;
+    cursor: pointer;
+}
+
+/*FormListBanner*/
+.list-data-demo {
+    width: 100%;
+}
+
+.list-data-demo h2 p {
+    color: blue;
+}
+
+.list-banner-title {
+    color: blue;
+}
+
+.add-list {
+    width: 100%;
+    height: 30px;
+}
+
+.add-list button {
+    width: 100px;
+    border-radius: 5px;
+    background: blue;
+    color: #fff;
+    border-color: unset;
+    float: right;
+}
+
+.form-list-banner {
+    margin-top: 15px;
+}
+
+.title-list {
+    display: flex;
+}
+
+.title-item-checkbox div {
+    padding: 10px 0;
+}
+
+.title-list-item {
+    border-top: 1px solid blue;
+    color: blue;
+}
+
+.title-item-checkbox {
+    width: 5%;
+}
+
+.title-item-status {
+    width: 10%;
+}
+
+.title-item-title {
+    width: 40%;
+}
+
+.title-item-active {
+    width: 13%;
+}
+
+.title-item-channel {
+    width: 10%;
+}
+
+.title-item-order {
+    width: 17%;
+}
+
+.title-item-mull {
+    width: 10%;
+}
+
+.title-list-item p {
+    font-weight: bold;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.content-list {
+    display: flex;
+}
+
+.content-list-item {
+    border-top: 1px solid blue;
+    border-bottom: 1px solid blue;
+}
+
+.content-list-item p, .content-list-item input {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.content-item-checkbox {
+    width: 5%;
+}
+
+.content-item-checkbox div {
+    padding: 10px 0;
+}
+
+.content-item-status {
+    width: 10%;
+}
+
+.content-item-title {
+    width: 40%;
+}
+
+.content-item-active {
+    width: 13%;
+}
+
+.content-item-channel {
+    width: 10%;
+}
+
+.content-item-order {
+    width: 17%;
+}
+
+.content-item-actions {
+    width: 10%;
+    display: flex;
+}
+
+.content-item-button {
+    padding: 10px 0;
+    display: flex;
+}
+
+.content-item-actions .edit {
+    margin: 0px 10px;
+    width: auto;
+    border-radius: 5px;
+    background: blue;
+    color: #fff;
+    border-color: unset;
+}
+
+.content-item-actions .delete {
+    width: auto;
+    border-radius: 5px;
+    border-color: unset;
+    color: #0c63e4;
+}
+
+
+/*FormDemo*/
+.wapper-container {
+    width: 100%;
+    border: 1px solid blue;
+}
+
+
+.banner-text {
+    color: blue;
+}
+
+.form-create {
+    display: block;
+}
+
+.banner-left {
+    width: 50%;
+    display: inline-block;
+    float: left;
+}
+
+.banner-left .banner-middle {
+    width: 70%;
+    margin: auto;
+}
+
+.banner-left .banner-middle .col p {
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.banner-left .banner-middle .col:first-child {
+    margin-bottom: 20px;
+}
+
+.banner-right {
+    width: 50%;
+    padding: 0 20px;
+    display: inline-block;
+}
+
+.img-upload {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.img-upload img {
+    width: 100%;
+    max-height: 150px;
+    max-width: 200px;
+    margin: auto;
+}
+
+.img-upload input {
+    width: 100%;
+    display: none;
+}
+
+.img-upload label {
+    position: absolute;
+    right: 30%;
+    bottom: 0;
+}
+
+.img-upload label::after {
+    content: "Upload";
+    font-family: FontAwesome;
+}
+
+.channel {
+    padding: 20px 0;
+    display: flex;
+}
+
+.channel p {
+    font-weight: 700;
+    width: 30%;
+}
+
+.channel select {
+    width: 70%;
+}
+
+.order {
+    padding: 20px 0;
+    display: flex;
+}
+
+.order p {
+    font-weight: 700;
+    width: 30%;
+}
+
+.order select {
+    width: 70%;
+}
+
+.status {
+    padding: 20px 0;
+    display: flex;
+}
+
+.status p {
+    font-weight: 700;
+    width: 30%;
+}
+
+.status select {
+    width: 70%;
+}
+
+.banner-actions {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.banner-actions .create {
+    margin: 0px 20px;
+    width: 70px;
+    border-radius: 5px;
+    background: blue;
+    color: #fff;
+    border-color: unset;
+}
+
+.banner-actions .cancel {
+    width: 70px;
+    border-radius: 5px;
+    border-color: unset;
+    color: #0c63e4;
+}
+/*form edit banner*/
+.editBannerText {
+    color: blue;
+}
+

@@ -1,0 +1,34 @@
+
+* {
+    box-sizing: border-box;
+}
+
+.column-d {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px;
+}
+
+.row-d:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.element {
+    margin-top: 30%;
+}
+
+.element-m {
+    margin-top: 16%;
+}
+
+.qr {
+    margin-left: 40%;
+    margin-top: 15%;
+}
+
+.qr-i {
+    margin-left: 10%;
+}
