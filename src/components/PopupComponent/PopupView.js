@@ -1,26 +1,24 @@
 import React, {Component} from 'react';
-import BannerService from "../../service/BannerService/BannerService";
 import {Pagination} from "antd";
+import PopupService from "../../service/PopupService/PopupService";
 
-
-class BannerView extends Component {
+class PopupView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            banners: [],
+            popups: [],
             totalElements: 0,
             numberOfElements: 0,
             pageIndex: 1,
-            size: 5,
-            channels: []
+            size: 5
         }
-        this.deleteBanner = this.deleteBanner.bind(this);
     }
 
     componentDidMount() {
-        BannerService.viewBanner(this.state.pageIndex, this.state.size).then((res) => {
+        PopupService.viewPopup(this.state.pageIndex, this.state.size).then((res) => {
+            debugger
             console.log(res.data.content)
-            this.setState({banners: res.data.content});
+            this.setState({popups: res.data.content});
             this.setState({totalElements: res.data.totalElements})
             this.setState({numberOfElements: res.data.numberOfElements})
             this.setState({pageIndex: res.data.number})
@@ -28,10 +26,9 @@ class BannerView extends Component {
     }
 
     changePage = (page, size) => {
-
-        BannerService.viewBanner(page, size).then((res) => {
+        PopupService.viewPopup(page, size).then((res) => {
             console.log(res);
-            this.setState({banners: res.data.content});
+            this.setState({popups: res.data.content});
             this.setState({totalElements: res.data.totalElements})
             this.setState({numberOfElements: res.data.numberOfElements})
             this.setState({pageIndex: res.data.number})
@@ -39,30 +36,28 @@ class BannerView extends Component {
         });
 
     }
-
-    createBanner = () => {
-        this.props.history.push("/create/banner/")
+    createPopup = () => {
+        this.props.history.push("/create/popup/")
     }
-    editBanner = (id) => {
-        this.props.history.push("/edit/banner/" + id)
+    editPopup = (id) => {
+        this.props.history.push("/edit/popup/" + id)
     }
 
-    deleteBanner(id) {
-        BannerService.deleteBanner(id).then(res => {
-            this.setState({banners: this.state.banners.filter(banner => banner.id !== id)});
-            alert("Xóa Banner Thành công")
+    deletePopup(id) {
+        PopupService.deletePopup(id).then(res => {
+            this.setState({popups: this.state.popups.filter(popup => popup.id !== id)});
+            alert("Xóa Pop-up Thành công")
         });
     }
-
 
     render() {
         return (
             <div className="list-data-demo">
                 <div className="list-banner-title">
-                    <h2><p>Quản lý Banner</p></h2>
+                    <h2><p>Quản lý Pop-up</p></h2>
                 </div>
                 <div className="add-list">
-                    <button onClick={() => this.createBanner()}>Thêm mới</button>
+                    <button onClick={() => this.createPopup()}>Thêm mới</button>
                 </div>
                 <div className="form-list-banner">
                     <div className="title-list">
@@ -73,25 +68,23 @@ class BannerView extends Component {
                         <div className="title-list-item title-item-title"><p>Tiêu đề</p></div>
                         <div className="title-list-item title-item-active"><p>Trạng thái</p></div>
                         <div className="title-list-item title-item-channel"><p>Kênh</p></div>
-                        <div className="title-list-item title-item-order"><p>Mức ưu tiên</p></div>
                         <div className="title-list-item title-item-mull"><p>Hành Động</p></div>
                     </div>
                     {
-                        this.state.banners.map(
-                            banner => <div className="content-list">
+                        this.state.popups.map(
+                            popup => <div className="content-list">
                                 <div className="content-list-item content-item-checkbox">
                                     <div><input type="checkbox"/></div>
                                 </div>
-                                <div className="content-list-item content-item-status"><p>{banner.id}</p></div>
-                                <div className="content-list-item content-item-title"><p>{banner.alternativeTitle}</p>
+                                <div className="content-list-item content-item-status"><p>{popup.id}</p></div>
+                                <div className="content-list-item content-item-title"><p>{popup.alternative_title}</p>
                                 </div>
-                                <div className="content-list-item content-item-active"><p>{banner.status}</p></div>
-                                <div className="content-list-item content-item-channel"><p>{banner.channelName}</p></div>
-                                <div className="content-list-item content-item-order"><p>{banner.priority}</p></div>
+                                <div className="content-list-item content-item-active"><p>{popup.status}</p></div>
+                                <div className="content-list-item content-item-channel"><p>{popup.channel_id}</p></div>
                                 <div className="content-list-item content-item-actions">
                                     <div className="content-item-button">
-                                        <button className="edit" onClick={() => this.editBanner(banner.id)}>Sửa</button>
-                                        <button className="delete" onClick={() => this.deleteBanner(banner.id)}>Xóa
+                                        <button className="edit" onClick={() => this.editPopup(popup.id)}>Sửa</button>
+                                        <button className="delete" onClick={() => this.deletePopup(popup.id)}>Xóa
                                         </button>
                                     </div>
                                 </div>
@@ -111,4 +104,4 @@ class BannerView extends Component {
     }
 }
 
-export default BannerView;
+export default PopupView;

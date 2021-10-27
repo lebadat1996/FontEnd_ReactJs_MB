@@ -14,19 +14,13 @@ import ENameCardEdit from "./components/ENameCardEdit";
 import BannerView from "./components/BannerComponent/BannerView";
 import Banner from "./components/BannerComponent/Banner";
 import EditBanner from "./components/BannerComponent/EditBanner";
+import PopupCreate from "./components/PopupComponent/PopupCreate";
+import PopupView from "./components/PopupComponent/PopupView";
+import PopupEdit from "./components/PopupComponent/PopupEdit";
+import PostCreate from "./components/PostComponent/PostCreate";
+import PostView from "./components/PostComponent/PostView";
+import PostEdit from "./components/PostComponent/PostEdit";
 function App() {
-
-    let login = <div>
-        <Router>
-            <div >
-                <Switch>
-                    <Route path = "/login" exact component = {LoginComponent}></Route>
-                    <Route path= "/forgot-password" component={ForgotPassword}></Route>
-                </Switch>
-            </div>
-        </Router>
-    </div>
-
     let main = <div>
         <HeaderComponent/>
         <Router>
@@ -45,6 +39,12 @@ function App() {
                     <Route path = "/name-card/edit/:id" component = {ENameCardEdit}></Route>
                     <Route path = "/name-card/detail/:id" component = {ENameCardDetail}></Route>
                     <Route path= "/change-password" component={ChangePassword}></Route>
+                    <Route path= "/create/popup/" component={PopupCreate}></Route>
+                    <Route path= "/edit/popup/:id" component={PopupEdit}></Route>
+                    <Route path= "/view/popup/" component={PopupView}></Route>
+                    <Route path= "/create/post/" component={PostCreate}></Route>
+                    <Route path= "/view/post/" component={PostView}></Route>
+                    <Route path= "/edit/post/:id" component={PostEdit}></Route>
                 </Switch>
             </div>
         </Router>

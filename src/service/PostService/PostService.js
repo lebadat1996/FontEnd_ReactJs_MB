@@ -1,17 +1,17 @@
+import {getCookie} from "../Auth-header";
 import axios from "axios";
 import {API_SERVICE_URL} from "../../helper/constant";
-import {getCookie} from "../Auth-header";
 
-const create = "api/banner/save";
-const view = "api/banner/view";
-const findById = "api/banner/getBannerById/";
-const update = "api/banner/update/"
-const remove = "api/banner/remove/"
-const getAllChannel = "channel/getAll"
+const create = "api/post/save";
+const view = "api/post/view";
+const findById = "api/post/getPostById/";
+const update = "api/post/update/";
+const remove = "api/post/remove/";
+const getAllCategory = "api/post/getAllCategory"
 
-class BannerService {
+class PostService {
 
-    createBanner(body) {
+    createPost(body) {
         const config = {
             headers: {
                 'content-type': 'multipart/form-data',
@@ -22,7 +22,7 @@ class BannerService {
     }
 
 
-    viewBanner(page, size) {
+    viewPost(page, size) {
         const config = {
             headers: {
                 "Authorization": `Bearer ` + getCookie("JSESSIONID")
@@ -31,16 +31,16 @@ class BannerService {
         return axios.get(API_SERVICE_URL + view + "?page=" + page + "&size=" + size, config)
     }
 
-    getBannerById(bannerId) {
+    getPostById(popupId) {
         const config = {
             headers: {
                 "Authorization": `Bearer ` + getCookie("JSESSIONID")
             }
         }
-        return axios.get(API_SERVICE_URL + findById + bannerId, config)
+        return axios.get(API_SERVICE_URL + findById + popupId, config)
     }
 
-    updateBanner(body, id) {
+    updatePost(body, id) {
         const config = {
             headers: {
                 'content-type': 'multipart/form-data',
@@ -50,7 +50,7 @@ class BannerService {
         return axios.post(API_SERVICE_URL + update + id, body, config)
     }
 
-    deleteBanner(id) {
+    deletePost(id) {
         const config = {
             headers: {
                 "Authorization": `Bearer ` + getCookie("JSESSIONID")
@@ -59,14 +59,14 @@ class BannerService {
         return axios.get(API_SERVICE_URL + remove + id, config)
     }
 
-    getAllChannel() {
+    getAllCategory() {
         const config = {
             headers: {
                 "Authorization": `Bearer ` + getCookie("JSESSIONID")
             }
         }
-        return axios.get(API_SERVICE_URL + getAllChannel, config)
+        return axios.get(API_SERVICE_URL + getAllCategory, config)
     }
 }
 
-export default new BannerService();
+export default new PostService();

@@ -371,6 +371,10 @@ hr {
     color: blue;
 }
 
+.wapper-container p {
+    color: blue;
+}
+
 .form-create {
     display: block;
 }
@@ -426,7 +430,7 @@ hr {
 }
 
 .img-upload label::after {
-    content: "Upload";
+    content: "\ec06";
     font-family: FontAwesome;
 }
 
@@ -492,8 +496,17 @@ hr {
     border-color: unset;
     color: #0c63e4;
 }
+
 /*form edit banner*/
 .editBannerText {
     color: blue;
 }
 
+.banner-view-page {
+    float: right;
+    margin-top: 10px;
+}
+
+.font-upload{
+
+}

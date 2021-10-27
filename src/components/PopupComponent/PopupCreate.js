@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import Switch from "react-switch";
-import BannerService from "../../service/BannerService/BannerService";
-import {Button, Modal} from "react-bootstrap";
 import avatar from "../../assets/bannerUpload.png";
-class Banner extends Component {
+import Switch from "react-switch";
+import {Button, Modal} from "react-bootstrap";
+import PopupService from "../../service/PopupService/PopupService";
+import BannerService from "../../service/BannerService/BannerService";
+
+class PopupCreate extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             status: false,
             alternativeTitle: '',
@@ -16,15 +18,13 @@ class Banner extends Component {
             creatorId: '',
             modifierId: '',
             show: false,
-            channels: [],
-            image: null
+            channels: []
         }
         this.handlerChange = this.handlerChange.bind(this);
         this.handChangeValueChannel = this.handChangeValueChannel.bind(this);
         this.handChangeValuePriority = this.handChangeValuePriority.bind(this);
         this.handChangeValueAvatar = this.handChangeValueAvatar.bind(this);
     }
-
 
     handlerChange(status) {
         this.setState({status})
@@ -44,9 +44,6 @@ class Banner extends Component {
 
     handChangeValueAvatar = (event) => {
         this.setState({file: event.target.files[0]});
-        this.setState({
-            image: URL.createObjectURL(event.target.files[0])
-        })
     }
     handChangeValueCreatorId = (event) => {
         this.setState({creatorId: event.target.value});
@@ -61,15 +58,15 @@ class Banner extends Component {
     handChangeValueModifierId = (event) => {
         this.setState({modifierId: event.target.value});
     }
-    viewBanner = () => {
-        this.props.history.push("/view/banner/")
-    }
     handlerClose = () => {
         this.setState({show: !this.state.show});
     }
-    createBanners = (e) => {
+    cancel = () => {
+        this.props.history.push("/view/popup");
+    }
+    createPopup = (e) => {
         e.preventDefault();
-        let banner = {
+        let popup = {
             alternativeTitle: this.state.alternativeTitle,
             destinationUrl: this.state.destinationUrl,
             file: this.state.file,
@@ -77,27 +74,26 @@ class Banner extends Component {
             priority: this.state.priority,
             creatorId: this.state.creatorId,
             modifierId: this.state.modifierId,
-            status: this.state.status,
-
+            status: this.state.status
         }
-        console.log('banner => ' + JSON.stringify(banner));
+        console.log('popup => ' + JSON.stringify(popup));
         debugger
         let body = new FormData();
-        body.append('alternativeTitle', banner.alternativeTitle);
-        body.append('destinationUrl', banner.destinationUrl);
-        body.append('file', banner.file);
-        body.append('channelId', banner.channelId);
-        body.append('priority', banner.priority);
-        body.append('status', banner.status);
-        if (banner.file === null) {
+        body.append('alternativeTitle', popup.alternativeTitle);
+        body.append('destinationUrl', popup.destinationUrl);
+        body.append('file', popup.file);
+        body.append('channelId', popup.channelId);
+        body.append('priority', popup.priority);
+        body.append('status', popup.status);
+        if (popup.file === null) {
             this.setState({show: !this.state.show});
         } else {
-            BannerService.createBanner(body).then((res) => {
+            PopupService.createPopup(body).then((res) => {
                 console.log(res)
                 if (res.status === 400) {
                     alert("error")
                 }
-                alert("create banner successfully")
+                alert("create pop-up successfully")
             }).catch(function (error) {
                 alert(error.response.data.error)
             });
@@ -116,7 +112,7 @@ class Banner extends Component {
         return (
             <div className="wapper-container container">
                 <div className="banner-text">
-                    <h2><p>Thêm mới Banner</p></h2>
+                    <h2><p>Thêm mới Pop-up</p></h2>
                 </div>
                 <form className="form-create">
                     <div className="banner-left">
@@ -129,8 +125,8 @@ class Banner extends Component {
                             </div>
                             <div className="col">
                                 <p>Link Url</p>
-                                <input placeholder="nhập url" name="destinationUrl" type="text" className="form-control"
-                                       value={this.state.destinationUrl}
+                                <input placeholder="nhập url" name="destinationUrl" type="text"
+                                       className="form-control" value={this.state.destinationUrl}
                                        onChange={this.handChangeValueDestinationUrl}/>
                             </div>
                         </div>
@@ -149,17 +145,6 @@ class Banner extends Component {
                                     value={channel.id}>{channel.name}</option>)}
                             </select>
                         </div>
-                        <div className="order">
-                            <p className="name">Mức ưu tiên:</p>
-                            <select className="form-select" value={this.state.priority}
-                                    onChange={this.handChangeValuePriority}>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
                         <div className="status">
                             <p className="name">Trạng thái:</p>
                             <Switch onChange={this.handlerChange} value={this.state.status}
@@ -167,15 +152,15 @@ class Banner extends Component {
                         </div>
                     </div>
                     <div className="banner-actions">
-                        <button className="create" type="submit" onClick={this.createBanners}>Tạo</button>
-                        <button className="cancel" type="submit" onClick={this.viewBanner}>Hủy</button>
+                        <button className="create" type="submit" onClick={this.createPopup}>Tạo</button>
+                        <button className="cancel" type="submit" onClick={this.cancel}>Hủy</button>
                     </div>
-                    <Modal show={this.state.show} onHide={() => this.createBanners()}>
+                    <Modal show={this.state.show} onHide={() => this.createPopup()}>
                         <Modal.Header>
                             EName-Card
                         </Modal.Header>
                         <Modal.Body>
-                            Xin mời chọn banner
+                            Xin mời chọn pop-up
                         </Modal.Body>
                         <Modal.Footer>
                             <Button onClick={() => this.handlerClose()}>Close</Button>
@@ -187,4 +172,4 @@ class Banner extends Component {
     }
 }
 
-export default Banner;
+export default PopupCreate;
